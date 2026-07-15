@@ -1,0 +1,16 @@
+[Unit]
+Description=Git Relay command runner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/my-bot
+EnvironmentFile=-/root/my-bot/.env
+ExecStart=/usr/bin/python3 /root/my-bot/cmd_runner.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
